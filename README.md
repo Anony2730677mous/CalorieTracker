@@ -34,9 +34,10 @@
 Для удобства тестирования сервисов есть ссылки на коллекции запросов в postman
 ## Postman Collections
 
-- **User Service:** [Ссылка на коллекцию][(https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-1eee36e1-83af-441e-8d76-8a457af84a89?action=share&creator=43354093)
-- **Dishes Service:** [Ссылка на коллекцию](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c06965d1-2b06-4a2c-960c-09bab708218d?action=share&creator=43354093)- 
-- **Meal Service:** [Ссылка на коллекцию](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-4b768669-cd7e-49cd-8932-5936a3fcff74?action=share&creator=43354093)
-- **Report Service:** [Ссылка на коллекцию] (https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c0145c6a-3ef4-4ab1-9959-2395a992938c?action=share&creator=43354093)
+- **User Service:** [Ссылка на коллекцию](https://www.postman.com/your-username/workspace/your-workspace/collection/your-user-service-collection)
+- **Dishes Service:** [Ссылка на коллекцию](https://www.postman.com/your-username/workspace/your-workspace/collection/your-dishes-service-collection)
+- **Meal Service:** [Ссылка на коллекцию](https://www.postman.com/your-username/workspace/your-workspace/collection/your-meal-service-collection)
+- **Report Service:** [Ссылка на коллекцию](https://www.postman.com/your-username/workspace/your-workspace/collection/your-report-service-collection)
+
 - 
 
