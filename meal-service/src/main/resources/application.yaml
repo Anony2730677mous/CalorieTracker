@@ -1,0 +1,34 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5400/test
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+     bootstrap-servers: localhost:9092
+     producer:
+       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+     consumer:
+       group-id: meal-service-group
+       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+       auto-offset-reset: earliest
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    org.apache.kafka: INFO
+  file:
+    name: logs/meal-service-logs.log
+
+
+
