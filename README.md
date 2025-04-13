@@ -41,10 +41,10 @@
 Для удобства тестирования сервисов есть ссылки на коллекции запросов в postman
 ## Postman Collections
 
-- **User Service:** [User Service](https://www.postman.com/your-username/workspace/your-workspace/collection/your-user-service-collection](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-1eee36e1-83af-441e-8d76-8a457af84a89?action=share&creator=43354093))
-- **Dishes Service:** [Dishes Service](https://www.postman.com/your-username/workspace/your-workspace/collection/your-dishes-service-collection](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c06965d1-2b06-4a2c-960c-09bab708218d?action=share&creator=43354093))
-- **Meal Service:** [Meal Service](https://www.postman.com/your-username/workspace/your-workspace/collection/your-meal-service-collection](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-4b768669-cd7e-49cd-8932-5936a3fcff74?action=share&creator=43354093))
-- **Report Service:** [Report Service](https://www.postman.com/your-username/workspace/your-workspace/collection/your-report-service-collection](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c0145c6a-3ef4-4ab1-9959-2395a992938c?action=share&creator=43354093))
+- **User Service:** [User Service](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-1eee36e1-83af-441e-8d76-8a457af84a89?action=share&creator=43354093)
+- **Dishes Service:** [Dishes Service](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c06965d1-2b06-4a2c-960c-09bab708218d?action=share&creator=43354093)
+- **Meal Service:** [Meal Service](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-4b768669-cd7e-49cd-8932-5936a3fcff74?action=share&creator=43354093)
+- **Report Service:** [Report Service](https://lunar-astronaut-228999.postman.co/workspace/Team-Workspace~38144695-1e32-4100-88bb-de34b80eff1f/collection/43354093-c0145c6a-3ef4-4ab1-9959-2395a992938c?action=share&creator=43354093)
 
 
 ### Установка и запуск
@@ -66,53 +66,56 @@
     ```sh
     mvn spring-boot:run
     ```
-4. **Запуск инфраструктуры проекта с помощью `docker-compose up -d` (см. ниже).:**
+4. **Запуск инфраструктуры проекта с помощью `docker-compose up -d` (см. ниже):**
 
 ### Инфраструктура через Docker Compose
 
 В корневой директории находится файл `docker-compose.yml`, который позволяет быстро развернуть Kafka, Zookeeper и PostgreSQL:
-```yaml
-version: '3.8'
-services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:latest
-    container_name: zookeeper
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-    ports:
-      - "2181:2181"
+<details>
+  <summary>Показать docker-compose.yml</summary>
 
-  kafka:
-    image: bitnami/kafka:latest
-    container_name: kafka
-    environment:
-      ALLOW_PLAINTEXT_LISTENER: "yes"
-      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CFG_LISTENERS: PLAINTEXT://0.0.0.0:9092
-    ports:
-      - "9092:9092"
-    depends_on:
-      - zookeeper
-    networks:
-      - kafka-network
+  ```yaml
+  version: '3.8'
+  services:
+    zookeeper:
+      image: confluentinc/cp-zookeeper:latest
+      container_name: zookeeper
+      environment:
+        ZOOKEEPER_CLIENT_PORT: 2181
+      ports:
+        - "2181:2181"
 
-  postgres:
-    image: postgres:15
-    container_name: postgres
-    environment:
-      POSTGRES_USER: userok
-      POSTGRES_PASSWORD: p@ssw0rd
-      POSTGRES_DB: pogreb
-    ports:
-      - "5400:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+    kafka:
+      image: bitnami/kafka:latest
+      container_name: kafka
+      environment:
+        ALLOW_PLAINTEXT_LISTENER: "yes"
+        KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+        KAFKA_CFG_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      ports:
+        - "9092:9092"
+      depends_on:
+        - zookeeper
+      networks:
+        - kafka-network
 
-networks:
-  kafka-network:
-    driver: bridge
+    postgres:
+      image: postgres:15
+      container_name: postgres
+      environment:
+        POSTGRES_USER: userok
+        POSTGRES_PASSWORD: p@ssw0rd
+        POSTGRES_DB: pogreb
+      ports:
+        - "5400:5432"
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
 
-volumes:
-  postgres-data:
-```
+  networks:
+    kafka-network:
+      driver: bridge
+
+  volumes:
+    postgres-data:
+</details>
